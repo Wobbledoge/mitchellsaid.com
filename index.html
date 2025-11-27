@@ -76,30 +76,32 @@
       min-height: 100vh;
     }
 
-    .article img {
+    .article img, .article iframe {
       width: 100%;
+      height: auto;
       border-radius: 8px;
       margin: 10px 0;
     }
 
     /* Responsive for mobile */
     @media (max-width: 768px) {
-    .layout {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto 1fr;
-    }
+      .layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+      }
 
-    .nav {
-      justify-content: flex-start;
-      padding: 16px;
-    }
+      .nav {
+        justify-content: flex-start;
+        padding: 16px;
+      }
 
-    .content {
-      padding: 16px;
-    }
+      .content {
+        padding: 16px;
+      }
 
-    .site-title { font-size: 1.5rem; }
-    .site-sub { font-size: 0.8rem; }
+      .site-title { font-size: 1.5rem; }
+      .site-sub { font-size: 0.8rem; }
+    }
 
   </style>
 </head>
