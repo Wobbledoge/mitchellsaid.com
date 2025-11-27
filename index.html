@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>mitchellsaid.com</title>
+  <style>
+    * { box-sizing: border-box; font-family: 'Times New Roman', serif; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #ffffff;
+      color: #000000;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100vh;
+    }
+
+    .nav {
+      background: #ffffff;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; /* center vertically */
+      text-align: center;
+      overflow-y: auto;
+    }
+
+    .site-title { font-size: 1.8rem; font-weight: bold; margin: 0; }
+    .site-sub { font-size: 0.9rem; margin-bottom: 20px; }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+    nav li + li { margin-top: 10px; }
+    nav a {
+      color: #000000;
+      text-decoration: none;
+      font-weight: 600;
+      display: block;
+      padding: 8px;
+      border-radius: 6px;
+    }
+    nav a:hover {
+      background: #eeeeee;
+    }
+
+    .content {
+      background: #ffffff;
+      padding: 24px;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s, opacity 0.5s ease-in;
+    }
+
+    .content.visible {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .article {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 20px;
+      min-height: 100vh;
+    }
+
+    .article img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="layout">
+
+    <aside class="nav" id="nav">
+      <div class="site-title">Mitchell Said</div>
+      <!--<div class="site-sub">My Home Online</div>-->
+
+      <nav>
+        <ul>
+          <li><a href="#article-1">About</a></li>
+          <li><a href="#article-2">Interests</a></li>
+          <li><a href="#article-3">Listening</a></li>
+          <li><a href="#article-music">Music</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content" id="content">
+      <article class="article" id="article-1">
+        <h2>About</h2>
+        <p>My name is Mitchell Said. I was born on October 10th, 2003. This means I am 22 years old. I have chosen to make a blog because I have become dissillusioned with the current implmentation of social media. I hope that this blog can be a healthier expression of myself.</p>
+        <p>I want this website to be a place where I can talk about whatever I want. Separate from the whole social media thing, I have wanted to start a blog for a while. I have a lot of views and opinions that I want to share. I want to practice writing on here, a skill that has been lost after a half decade of engineering study. I am also a pretty political guy, in a far left kind of way. So it is also possible that there will be articles or opinion pieces on here relating to that. I also have a place to write about my interests past and present. A place to document my listening tastes and preferences. And finally a place to share some of my own creative output.</p>
+        <P>Anyway some more about me. My models/inspirations are Nick Mullen, Joshua Citarella, Che Guevara, and honestly Zohran Mamdani. Seriously that guy is one of the most inspring things to happen in my lifetime and I believe that wholeheartedly.</P>
+        <p>Below is my friend Nick Mullen.</p>
+        <img src="images/mullen.png" alt="Image one">
+      </article>
+
+      <article class="article" id="article-2">
+        <h2>Interests</h2>
+        <h3>Relationship with Technology</h3>
+        <p>This topic is consuming me at the moment. I made this website as a reaction to my own dissatifaction with the way information is circulated now. I admittedly have some pretty radical views regarding the ownership of the digital world but I'm going to tone it down for this post. Social media as it exists now is pretty much one of the most harmful psychological weapons in all of human history. I think what I find very upsetting about this is that most people understand this but accept it with an apathetic malaise. I think the tipping point for me was learning that doomscrolling is causing actual real observable changes to brain function. My personal view is that funny video feed is not worth permanent brain damage. On Halloween of this year I deleted TikTok and Instagram from my phone. In my experience most people are extremely opposed to doing this. What I have found so far is that we make it appear much more difficult in our heads. I have not redownloaded either of those apps. What I did do instead however, was develop an extreme reliance on the YouTube app. The weeks following my deletion of TikTok and Instagram, saw my phone screentime jump back up solely due to YouTube. Once again, in my head the idea of deleting YouTube seemed to be an impossible task. I made justifications that watching longer form videos was at least an improvement over short form content. Ironically it ended up being a YouTube video that gave me the will to "Dumbify" my iPhone. The process for this essentially just involves deleting every app you can, and removing almost any app you can't delete, from the homepage. I also set my phone screen to black and white. I did all of this about 5 days ago and it has been interesting to observe the ways that I am adapting or rather, coping. I still use my phone before bed, only now it is texting or reading Wikipedia pages. I feel like I am using my laptop more as well. I still watch YouTube, albeit I have downloaded browser extensions to make it less convenient. Still I feel like these are only marginal improvements. If anything, this process has revealed how greatly my life revolves around technology. I am effectively playing Whack-A-Mole with different platforms and the methods I use to access them. I still feel like an addict.</p>
+        <h3>Relationship with Technology II</h3>
+        <p>In my dissatisfaction with the current state of things, I started looking to past technologies. Though the belief that consumer technology is harmful has existed forever, it feels that right now the association of techology with evil is greater than ever before. Really what I'm getting at here is I bought an iPod. I actually did this a couple years ago, but my interest in it became renewed after deleting social media. I ordered a lot of parts off of AliExpress and when they all arrived I managed to upgrade the battery, and the storage. I've slowly been acquiring a digital library of music, locally on my computer as MP3s, rather than streamed playlists. I am honestly really happy with it and I feel like this has inspired my next purchase. As part of dumbifying my iPhone, I deleted all my games. Not that I played many games on my phone to begin with. Anyway, to address this mobile gaming shaped hole in my heart, I ordered a Sony PSP from Japan. Sidenote: I have become a sucker for Ebay auctions. Ebay auctions and AliExpress are an extremely potent combo. So yes, I again ordered several parts off of AliExpress to upgrade the device, and address some flaws with it. Currently I am waiting for everything to arrive but I am excited for this. Now you may think "What's the point of replacing all of the functions of your phone with separate devices that do the same thing?". The following may sound stupid, but it's because using these extra devices makes it less convenient. Less convenient to play games, less convenient to listen to music. The same reason I deleted YouTube from my phone, only to use it on my laptop. You may be thinking "but listening to music is not bad for you". I agree to an extent. However when it becomes a habit, or something we stop thinking about, I fear that it has a similar effect to mindless scrolling. The purpose of making these things slightly less convenient, is to promote intentionality with how I spend my time, or even how my brain activity is allocated. I would rather be someone that can go about their day just fine without music, than be someone that needs a constant stream of stimulating music to make it through the day.</p>
+        <!--<img src="https://picsum.photos/seed/two/1200/600" alt="Image two">-->
+        
+      </article>
+
+      <article class="article" id="article-3">
+        <h2>Listening</h2>
+        <h3>The Music Tapes</h3>
+        <p>I am aware of the allegations regarding Julian Koster. He seems like a really bad guy. I will talk about the music now. These songs are genuinely some of the most beautiful things I have ever heard. In a very warm and cozy way. I am very happy that Christmas is right around the corner because these songs are very like old timey christmas kinda thing. This dude is playing banjo with a violin bow. What the freak. And singing/musical saw. Big bells, horns. My favourite songs are It's so Peaceful in the Country, and The Sea of Tranquility. The allegations are extremely dissapointing because this is someone I want to consider a role model and inspiration.</p>
+        <img src="https://media.npr.org/assets/img/2011/12/14/juliankoster1_wide-d43ad611404026d24cda6324515c1b6cff43e23a.jpg" alt="Image three">
+        <p>These are my favourite songs, you can stream them in here so Julian Koster doesn't get any money.</p>
+        <p>It's so Peaceful in the Country.</p>
+        <audio controls>
+            <source src="music/peaceful.mp3" type="audio/mpeg">
+        </audio>
+        <p>The Sea of Tranquility.</p>
+        <audio controls>
+            <source src="music/sea.mp3" type="audio/mpeg">
+        </audio>
+      </article>
+
+      <article class="article" id="article-music">
+        <h2>Music</h2>
+        <p>Music, I feel has been my most "legitimate" creative output for the better part of 6 years. I started doing this with no prior training, no knowledge of software, no ability to play any instruments. Tutorials bored me. All of the progress I made in this medium was through trial and error. Progress was very slow, and my limited ability led me to establish my own workflow and methods. I created the vast majority of my music between 2020-2023. I have never stopped but I have significantly slowed down. I still write songs often, just fewer are recorded and developed. This is not an amazing feeling but my life has changed greatly in very positive ways that unfortunately did not translate to music. Still I feel the quality of what I do record has continued to increase. I am immesnely proud of the 200 some songs that I have recorded. I encourage anyone reading this to listen to the songs below and explore what else exists on my bandcamp profile. In the past all of my music was recorded using FL Studio. I was initially very unhappy with the sound of VST instruments. This led me to become effective enough at playing a number of instruments. To date I can play the Guitar, Bass, Drums, Accordion, and Banjo. I would like to add musical saw to this list. Recently I have begun using Ableton. Despite a lack of output to prove the following statement, I do believe that my songwriting is in the best place it's ever been. Time will tell if this is true.</p>
+        <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=171605608/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://mitchellsaid.bandcamp.com/track/questions-never-asked">Questions Never Asked by Mitchell Said</a></iframe>
+        <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=649925329/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://mitchellsaid.bandcamp.com/track/its-over">It&#39;s over by Mitchell Said</a></iframe>
+        <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1351221351/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://mitchellsaid.bandcamp.com/track/i-feel-like-an-old-person-but-i-am-still-young">I feel like an old person but I am still young by Mitchell Said</a></iframe>
+        <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=3675943681/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://mitchellsaid.bandcamp.com/track/robin">Robin by Mitchell Said</a></iframe>
+        <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1108431996/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://mitchellsaid.bandcamp.com/track/still-crumb-night-sounds">still / crumb / night sounds by Mitchell Said</a></iframe>
+        
+      </article>
+
+    </main>
+
+  </div>
+  <script>
+    const content = document.querySelector('.content');
+
+    // Handle link clicks
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const id = link.getAttribute('href');
+        const target = document.querySelector(id);
+        if (target) {
+          content.classList.add('visible');
+          const relativeTop = target.offsetTop;
+          content.scrollTop = relativeTop;
+          target.setAttribute('tabindex', '-1');
+          target.focus({ preventScroll: true });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
