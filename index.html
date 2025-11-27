@@ -175,7 +175,7 @@
   <script>
     const content = document.querySelector('.content');
 
-    // Handle link clicks
+    // Handle link clicks and adjust scroll to account for visible content padding
     document.querySelectorAll('nav a').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
@@ -183,8 +183,11 @@
         const target = document.querySelector(id);
         if (target) {
           content.classList.add('visible');
-          const relativeTop = target.offsetTop;
-          content.scrollTop = relativeTop;
+          // Get position relative to content container and adjust for padding
+          const contentRect = content.getBoundingClientRect();
+          const targetRect = target.getBoundingClientRect();
+          const scrollOffset = targetRect.top - contentRect.top;
+          content.scrollTop += scrollOffset - 16; // subtract padding to prevent cut-off
           target.setAttribute('tabindex', '-1');
           target.focus({ preventScroll: true });
         }
