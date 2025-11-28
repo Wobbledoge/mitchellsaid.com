@@ -85,6 +85,7 @@
     }
 
     .mobile-menu {
+      font-size: 1.2rem;
       width: auto;
       min-width: 150px;  /* optional */
       text-align: center;
@@ -98,6 +99,7 @@
 
       text-align: center;        /* centers most text */
       text-align-last: center;   /* centers the selected option in Firefox and IE */
+      line-height: 1.2;
     }
 
     .mobile-menu-wrapper {
@@ -117,7 +119,7 @@
       .nav {
         justify-content: flex-start;
         align-items: center;
-        padding: 16px;
+        padding: 0px;
       }
 
       .content {
@@ -135,6 +137,11 @@
         min-height: 100vh;  /* keep full viewport height */
         margin-top: 0;      /* no extra top margin */
         margin-bottom: 20px;
+      }
+    }
+    @media (min-width: 769px) {
+      .mobile-menu-wrapper {
+        display: none;
       }
     }
   </style>
@@ -225,7 +232,7 @@
       content.classList.add('visible');
       const targetTop = target.offsetTop;
       const dropdownHeight = mobileMenu.offsetHeight;
-      const extraGap = 60; // scroll slightly higher than normal
+      const extraGap = 25; // scroll slightly higher than normal
       content.scrollTop = targetTop - dropdownHeight - extraGap;
       mobileMenu.value = '#' + target.id;
     }
