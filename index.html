@@ -26,7 +26,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center; /* center vertically */
+      justify-content: center;
       text-align: center;
       overflow-y: auto;
     }
@@ -55,7 +55,7 @@
 
     .content {
       background: #ffffff;
-      padding: 24px;
+      padding: 8px;
       overflow-y: auto;
       scroll-behavior: smooth;
       visibility: hidden;
@@ -73,7 +73,8 @@
       border-radius: 10px;
       padding: 16px;
       margin-bottom: 20px;
-      min-height: 100vh;
+      min-height: 100vh; /* fill the viewport */
+      border: none;
     }
 
     .article img, .article iframe {
@@ -83,7 +84,21 @@
       margin: 10px 0;
     }
 
-    /* Responsive for mobile */
+    .mobile-menu {
+      display: none;
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      background: #ffffff;
+      border: none;
+      text-align: center;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+
     @media (max-width: 768px) {
       .layout {
         grid-template-columns: 1fr;
@@ -96,13 +111,26 @@
       }
 
       .content {
-        padding: 16px;
+        padding: 0; /* remove padding so articles start at the top */
       }
 
       .site-title { font-size: 1.5rem; }
       .site-sub { font-size: 0.8rem; }
-    }
 
+      .desktop-menu {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .article {
+        min-height: 100vh;  /* keep full viewport height */
+        margin-top: 0;      /* no extra top margin */
+        margin-bottom: 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -112,7 +140,15 @@
       <div class="site-title">Mitchell Said</div>
       <div class="site-sub"></div>
 
-      <nav>
+      <select id="mobile-menu" class="mobile-menu">
+        <option value="" selected>&#9776;</option>
+        <option value="#article-1">About</option>
+        <option value="#article-2">Interests</option>
+        <option value="#article-3">Listening</option>
+        <option value="#article-music">Music</option>
+      </select>
+
+      <nav class="desktop-menu">
         <ul>
           <li><a href="#article-1">About</a></li>
           <li><a href="#article-2">Interests</a></li>
@@ -174,24 +210,55 @@
   </div>
   <script>
     const content = document.querySelector('.content');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const articles = document.querySelectorAll('.article');
 
-    // Handle link clicks and adjust scroll to account for visible content padding
-    document.querySelectorAll('nav a').forEach(link => {
+    function scrollToTarget(target) {
+      content.classList.add('visible');
+      const targetTop = target.offsetTop;
+      const dropdownHeight = mobileMenu.offsetHeight;
+      const extraGap = 60; // scroll slightly higher than normal
+      content.scrollTop = targetTop - dropdownHeight - extraGap;
+      mobileMenu.value = '#' + target.id;
+    }
+
+    // Desktop links
+    document.querySelectorAll('.desktop-menu a').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
-        const id = link.getAttribute('href');
-        const target = document.querySelector(id);
-        if (target) {
-          content.classList.add('visible');
-          // Get position relative to content container and adjust for padding
-          const contentRect = content.getBoundingClientRect();
-          const targetRect = target.getBoundingClientRect();
-          const scrollOffset = targetRect.top - contentRect.top;
-          content.scrollTop += scrollOffset - 16; // subtract padding to prevent cut-off
-          target.setAttribute('tabindex', '-1');
-          target.focus({ preventScroll: true });
+        const t = document.querySelector(link.getAttribute('href'));
+        scrollToTarget(t);
+      });
+    });
+
+    // Mobile dropdown
+    mobileMenu.addEventListener('change', function () {
+      if (!this.value) return;
+      const t = document.querySelector(this.value);
+      scrollToTarget(t);
+    });
+
+    // Update dropdown as user scrolls, only after scrolling down
+    let initialScroll = true;
+    content.addEventListener('scroll', () => {
+      if (initialScroll) {
+        initialScroll = false; // skip first scroll event
+        return;
+      }
+      const scrollPosition = content.scrollTop + mobileMenu.offsetHeight + 100;
+      articles.forEach(article => {
+        if (
+          scrollPosition >= article.offsetTop &&
+          scrollPosition < article.offsetTop + article.offsetHeight
+        ) {
+          mobileMenu.value = '#' + article.id;
         }
       });
+    });
+
+    // Ensure hamburger is shown on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      mobileMenu.value = "";
     });
   </script>
 </body>
