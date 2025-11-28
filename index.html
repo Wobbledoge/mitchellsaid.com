@@ -85,18 +85,24 @@
     }
 
     .mobile-menu {
-      display: none;
-      width: 100%;
+      width: auto;
+      min-width: 150px;  /* optional */
+      text-align: center;
       padding: 10px;
-      font-size: 1rem;
-      margin-bottom: 20px;
       border-radius: 6px;
       background: #ffffff;
       border: none;
-      text-align: center;
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
+    }
+
+    .mobile-menu-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 20px;
     }
 
     @media (max-width: 768px) {
@@ -106,8 +112,8 @@
       }
 
       .nav {
-        justify-content: center; /* vertical centering */
-        align-items: center;     /* horizontal centering */
+        justify-content: flex-start;
+        align-items: center;
         padding: 16px;
       }
 
@@ -120,15 +126,6 @@
 
       .desktop-menu {
         display: none;
-      }
-
-      .mobile-menu {
-        display: block;
-        margin: 0 auto 20px auto; /* center horizontally */
-        text-align: center;       /* center text inside select */
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
       }
 
       .article {
@@ -146,13 +143,15 @@
       <div class="site-title">Mitchell Said</div>
       <div class="site-sub"></div>
 
-      <select id="mobile-menu" class="mobile-menu">
-        <option value="" selected>&#9776;</option>
-        <option value="#article-1">About</option>
-        <option value="#article-2">Interests</option>
-        <option value="#article-3">Listening</option>
-        <option value="#article-music">Music</option>
-      </select>
+      <div class="mobile-menu-wrapper">
+        <select id="mobile-menu" class="mobile-menu">
+          <option value="" selected>&#9776;</option>
+          <option value="#article-1">About</option>
+          <option value="#article-2">Interests</option>
+          <option value="#article-3">Listening</option>
+          <option value="#article-music">Music</option>
+        </select>
+      </div>
 
       <nav class="desktop-menu">
         <ul>
