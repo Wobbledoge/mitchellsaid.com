@@ -107,7 +107,7 @@
       justify-content: center;
       align-items: center;
       width: 100%;
-      margin-bottom: 20px;
+      margin-bottom: 0px;
     }
 
     @media (max-width: 768px) {
@@ -120,6 +120,7 @@
         justify-content: flex-start;
         align-items: center;
         padding-top: 20px;
+        padding-bottom: 0px;
       }
 
       .content {
@@ -232,7 +233,7 @@
       content.classList.add('visible');
       const targetTop = target.offsetTop;
       const dropdownHeight = mobileMenu.offsetHeight;
-      const extraGap = 70; // scroll slightly higher than normal
+      const extraGap = 27; // scroll slightly higher than normal
       content.scrollTop = targetTop - dropdownHeight - extraGap;
       mobileMenu.value = '#' + target.id;
     }
