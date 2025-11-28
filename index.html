@@ -100,6 +100,7 @@
       text-align: center;        /* centers most text */
       text-align-last: center;   /* centers the selected option in Firefox and IE */
       line-height: 1.2;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .mobile-menu-wrapper {
@@ -233,9 +234,17 @@
     function scrollToTarget(target) {
       content.classList.add('visible');
       const targetTop = target.offsetTop;
-      const dropdownHeight = mobileMenu.offsetHeight;
-      const extraGap = 27; // scroll slightly higher than normal
-      content.scrollTop = targetTop - dropdownHeight - extraGap;
+      let extraGap;
+      if (window.innerWidth <= 768) { 
+        // mobile
+        const dropdownHeight = mobileMenu.offsetHeight;
+        extraGap = 27;
+        content.scrollTop = targetTop - dropdownHeight - extraGap;
+      } else {
+        // desktop
+        extraGap = 0; // less extra gap on desktop
+        content.scrollTop = targetTop - extraGap;
+      }
       mobileMenu.value = '#' + target.id;
     }
 
