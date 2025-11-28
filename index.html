@@ -249,7 +249,7 @@
         extraGap = 0; // less extra gap on desktop
         content.scrollTop = targetTop - extraGap;
       }
-      mobileMenu.value = '#' + target.id;
+      //mobileMenu.value = '#' + target.id;
     }
 
     // Desktop links
@@ -266,6 +266,7 @@
       if (!this.value) return;
       const t = document.querySelector(this.value);
       scrollToTarget(t);
+      this.selectedIndex = 0;
     });
 
     // Update dropdown as user scrolls, only after scrolling down
@@ -281,7 +282,7 @@
           scrollPosition >= article.offsetTop &&
           scrollPosition < article.offsetTop + article.offsetHeight
         ) {
-          mobileMenu.value = '#' + article.id;
+          //mobileMenu.value = '#' + article.id;
         }
       });
     });
