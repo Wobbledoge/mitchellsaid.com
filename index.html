@@ -1,208 +1,229 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>mitchellsaid.com</title>
-  <style>
-    * { box-sizing: border-box; font-family: 'Times New Roman', serif; }
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: #ffffff;
-      color: #000000;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>mitchellsaid.com</title>
+<style>
+* { box-sizing: border-box; font-family: 'Times New Roman', serif; }
+html, body { margin:0; padding:0; height:100%; background:#fff; color:#000; }
 
-    .layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      height: 100vh;
-    }
+/* Three-column layout */
+.layout {
+  display: grid;
+  grid-template-columns: 0.315fr 1fr; /* nav | content | right */
+  grid-template-areas: "nav content right";
+  width:100%;
+  min-height:100vh;
+}
 
-    .nav {
-      background: #ffffff;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow-y: auto;
-    }
+.nav {
+  grid-area: nav;
+  padding:24px;
+  background:#fff;
+  display:flex;
+  flex-direction: column;
+  justify-content: center; /* vertically center all nav content */
+  align-items: flex-start; /* keep text left-aligned */
+  height: 100vh; /* make nav full height to enable vertical centering */
+  padding-bottom: 20%;
+}
 
-    .site-title { font-size: 1.8rem; font-weight: bold; margin: 0; }
-    .site-sub { font-size: 0.9rem; margin-bottom: 20px; }
+.desktop-menu{
+    padding-left: 10%;
+}
 
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-    }
-    nav li + li { margin-top: 10px; }
-    nav a {
-      color: #000000;
-      text-decoration: none;
-      font-weight: 600;
-      display: block;
-      padding: 8px;
-      border-radius: 6px;
-    }
-    nav a:hover {
-      background: #eeeeee;
-    }
+nav ul { list-style:none; margin:0; padding:0; width:100%; }
+nav li+li { margin-top:10px; }
+nav a { color:#000; text-decoration:none; font-weight:400; display:block; padding:8px; border-radius:6px; font-size: 1.5rem;}
+nav p { color:#000; text-decoration:none; font-weight:400; display:block; padding:8px; border-radius:6px; padding-top: 0%; font-size: 2.2rem; }
+nav a:hover { background:#eee; }
 
-    .content {
-      background: #ffffff;
-      padding: 8px;
-      overflow-y: auto;
-      scroll-behavior: smooth;
-      visibility: hidden;
-      opacity: 0;
-      transition: visibility 0s, opacity 0.5s ease-in;
-    }
+.content {
+  grid-area: content;
+  padding:8px;
+}
 
-    .content.visible {
-      visibility: visible;
-      opacity: 1;
-    }
+/* Wrap each article + right item in a grid */
+.article-wrapper {
+  display:grid;
+  grid-template-columns: 0.75fr 0.33fr; /* center + right */
+  gap:16px;
+  margin-bottom:40px;
+}
 
-    .article {
-      background: #ffffff;
-      border-radius: 10px;
-      padding: 16px;
-      margin-bottom: 20px;
-      min-height: 100vh; /* fill the viewport */
-      border: none;
-    }
+.article {
+  padding:16px;
+}
 
-    .article img, .article iframe {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin: 10px 0;
-    }
+.article img, .article iframe { width:100%; height:auto; border-radius:8px; margin:10px 0; }
 
-    .mobile-menu {
-      font-size: 1.2rem;
-      width: auto;
-      min-width: 150px;  /* optional */
-      text-align: center;
-      padding: 10px;
-      border-radius: 6px;
-      background: #ffffff;
-      border: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      outline: none;
-      text-align: center;        /* centers most text */
-      text-align-last: center;   /* centers the selected option in Firefox and IE */
-      line-height: 1.2;
-      -webkit-tap-highlight-color: transparent;
-      color: #000000;
-    }
-    .mobile-menu option {
-      color: #000000;
-      background: #ffffff;
-    }
-    .mobile-menu-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      margin-bottom: 0px;
-      border: none;
-    }
+.right-item {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size:1.8rem;
+  /*border:2px solid #000;*/
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  padding:16px;
+  font-weight: 500;
+  font-size: 4rem;
+  padding-bottom: 10%;
+  height: 100vh;
+}
 
-    @media (max-width: 768px) {
-      .layout {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
-      }
+.mobile-title{
+  display: none;
+}
+.mobile-menu-wrapper { 
+  display:none; 
+  justify-content:center; 
+  align-items:center; 
+  width:100%; 
+  margin-bottom:16px;
+}
 
-      .nav {
-        justify-content: flex-start;
-        align-items: center;
-        padding-top: 20px;
-        padding-bottom: 0px;
-      }
+.mobile-menu { 
+  font-size:1.2rem; 
+  min-width:150px; 
+  text-align:center; 
+  padding:10px; 
+  border:none; 
+  border-radius:6px; 
+  background:#fff; 
+  -webkit-appearance:none; 
+  appearance:none; 
+  outline:none; 
+  -webkit-tap-highlight-color:transparent; 
+  color:#000; 
+}
+@media (max-width:768px) {
+  .layout {
+    grid-template-columns:1fr; 
+    grid-template-rows:auto 1fr; 
+    grid-template-areas:"nav" "content"; 
+  }
 
-      .content {
-        padding: 0; /* remove padding so articles start at the top */
-      }
+  .nav {
+    position: sticky;       /* stick to viewport */
+    top: 0;                 /* at the top */
+    height: auto;           /* allow height to shrink to content */
+    justify-content: flex-start; /* stack items at top */
+    align-items: center;    /* center horizontally */
+    background: #fff;       /* optional: same as body bg */
+    z-index: 1000;          /* ensure it stays above content */
+    padding-top: 15px;
+    padding-bottom: 0px;
+  }
 
-      .site-title { font-size: 1.5rem; }
-      .site-sub { font-size: 0.8rem; }
+  .desktop-menu { display:none; }
+  .right-item { display:none; } /* hide right boxes on mobile */
+  .article-wrapper { 
+    display:block; /* stack articles normally */
+    margin-bottom:20px; 
+  }
 
-      .desktop-menu {
-        display: none;
-      }
+  .article { 
+    min-height:auto; 
+    padding:0px;
+    padding-top: 80px;
+  }
+  .content{
+    padding-top: 60px;
+  }
+  .mobile-menu-wrapper { display:flex; } /* show hamburger on mobile */
+  .mobile-title { display:block; text-align:center; font-size:1.5rem; margin-bottom:0px; }
+}
 
-      .article {
-        min-height: 100vh;  /* keep full viewport height */
-        margin-top: 0;      /* no extra top margin */
-        margin-bottom: 20px;
-      }
-    }
-    @media (min-width: 769px) {
-      .mobile-menu-wrapper {
-        display: none;
-      }
-    }
-  </style>
+@media (min-width:769px) {
+  .mobile-menu-wrapper { 
+    display:none; 
+    } 
+  .nav {
+    position: sticky;      /* or fixed if you want it always on screen */
+    top: 0;
+    height: 100vh;         /* full height of viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertically center items */
+    align-items: flex-start;
+    padding-bottom: 20%;
+  }  
+    
+    
+}
+</style>
 </head>
 <body>
-  <div class="layout">
 
-    <aside class="nav" id="nav">
-      <div class="site-title">Mitchell Said</div>
-      <div class="site-sub"></div>
+<div class="layout">
 
-      <div class="mobile-menu-wrapper">
-        <select id="mobile-menu" class="mobile-menu">
-          <option value="" selected>&#9776;</option>
-          <option value="#article-1">About</option>
-          <option value="#article-2">Interests</option>
-          <option value="#article-3">Listening</option>
-          <option value="#article-music">Music</option>
-        </select>
-      </div>
+  <!-- Navigation column -->
+  <aside class="nav">
+    <div class="mobile-title">mitchellsaid.com</div>
+    <nav class="desktop-menu">
+      <ul>
+        <p>mitchellsaid.com</p>
+        <li><a href="#article-1">About</a></li>
+        <li><a href="#article-2">Interests</a></li>
+        <li><a href="#article-3">Listening</a></li>
+        <li><a href="#article-music">Music</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu-wrapper">
+      <select id="mobile-menu" class="mobile-menu">
+        <option value="" selected>&#9776;</option> <!-- hamburger always shown -->
+        <option value="#article-1">About</option>
+        <option value="#article-2">Interests</option>
+        <option value="#article-3">Listening</option>
+        <option value="#article-music">Music</option>
+      </select>
+    </div>
+  </aside>
 
-      <nav class="desktop-menu">
-        <ul>
-          <li><a href="#article-1">About</a></li>
-          <li><a href="#article-2">Interests</a></li>
-          <li><a href="#article-3">Listening</a></li>
-          <li><a href="#article-music">Music</a></li>
-        </ul>
-      </nav>
-    </aside>
 
-    <main class="content" id="content">
+
+  <!-- Content column -->
+  <main class="content">
+    <!-- About -->
+    <div class="article-wrapper" id="article-1-wrapper">
       <article class="article" id="article-1">
-        <h2>About</h2>
+      <h2>About</h2>
+      <i>Nov 27, 2025</i>
         <p>My name is Mitchell Said. I was born on October 10th, 2003. This means I am 22 years old. I have chosen to make a blog because I have become dissillusioned with the current implementation of social media. I hope that this blog can be a healthier expression of myself.</p>
         <p>I want this website to be a place where I can talk about whatever I want. Separate from the whole social media thing, I have wanted to start a blog for a while. I have a lot of views and opinions that I want to share. I want to practice writing on here, a skill that has been lost after a half decade of engineering study. I am also a pretty political guy, in a far left kind of way. So it is also possible that there will be articles or opinion pieces on here relating to that. I also have a place to write about my interests past and present. A place to document my listening tastes and preferences. And finally a place to share some of my own creative output.</p>
         <P>Anyway some more about me. My role models/inspirations are Nick Mullen, Joshua Citarella, Che Guevara, and honestly Zohran Mamdani. Seriously that guy is one of the most inspring things to happen in my lifetime and I believe that wholeheartedly.</P>
         <p>Below is my friend Nick Mullen.</p>
-        <img src="images/mullen.png" alt="Image one">
+      <img src="images/mullen.png" alt="Image one">
       </article>
+      <div class="right-item">About</div>
+    </div>
 
+    <!-- Interests -->
+    <div class="article-wrapper" id="article-2-wrapper">
       <article class="article" id="article-2">
-        <h2>Interests</h2>
+      <h2>Interests</h2>
+        <h3>What is a Home?</h3>
+        <i>Dec 04, 2025</i>
+        <p>Recently I went to my parents house for the weekend. One night while I was there I had a conversation with my mom. I'm not sure how the topic came up but we ended up talking about the kinds of houses that we would want to live in. We then spent the next hour looking at real estate listings all over Ontario, which is a hobby we share. After this I went to the basement where I continued thinking about what my dream house would look like. Frustratingly, my dream house is not a house that gets built anymore, depsite being ubiquitous in the past century. I want brick exterior walls, wood panelling. Ornate (relatively speaking) interior finishes and millwork, etc. These houses exist of course, just at a price point that seems exceptionally far beyond anything I could afford in my lifetime. One possible solution I thought of was to build a house myself. Next thing I know, I was watching videos explaining tudor wood panels, historical wood carving, and deciphering the "narrative" of a home. It seemed incredibly diffcult, but despite this I could not shake the thought that if it was possible for someone to build a house 200 years ago, why shouldn't it be for me? At this point I started thinking about what a house meant to me. Afterall building a house using historial methods seems very extreme. I think the predominant societal view now is that the house is a financial investment. One that does not (or at least should not) depreciate in value. I think this is completely insane and delusional. So given that I do not agree with this investment view, what does a house mean to me? I think for generations far older than myself, a house was viewed as a first step towards accomplishing subsequent milestones in life. Things like marriage, and kids. The house served as a space for building a family. While I think this is a valid view, I am not at a point in my life where I am trying to build a family. There are also many people that never aspire for this, yet the home is still important to them. After a little bit of reflecting this is what I realized. There's a lot of public discourse regarding a decline of third spaces, I'm sure we've all heard about this. I think what's been happening at the same time is a decline in the quality of first spaces. If a third space is where one can explore the world externally, the first space is where one can explore within. This internal exploration can take many forms. Something as simple as decoration is in my opinion very important to the individual. Decoration can provide connection between the world and the self. Additionally, I feel that hobbies provide significant value to my life. I have personally always been very into creative hobbies where I get to make things. A frequent barrier I have encountered is that sometimes these things are loud, or they take up lots of space, or are otherwise deemed disturbances. Without a private space that I am truly free to customize, my interest, hobbies, passions, the things that matter the most to me, far more than a career, become limited. These limitations on my hobbies by extension become limitations on my expression of self. Today I watched a video of an 87 year old artist showing his studio space where he has lived for 58 years. He never had a wife, he never had kids, but what he did have was a space that he owned, a space that he valued for the freedom it provided, and for the expression it allowed. I think on some level the soul demands a space to grow, and a space to express said growth. This is what a home means to me. </p>
         <h3>Relationship with Technology</h3>
+        <i>Nov 27, 2025</i>
         <p>This topic is consuming me at the moment. I made this website as a reaction to my own dissatifaction with the way information is circulated now. I admittedly have some pretty radical views regarding the ownership of the digital world but I'm going to tone it down for this post. Social media as it exists now is pretty much one of the most harmful psychological weapons in all of human history. I think what I find very upsetting about this is that most people understand this but accept it with an apathetic malaise. I think the tipping point for me was learning that doomscrolling is causing actual real observable changes to brain function. My personal view is that funny video feed is not worth permanent brain damage. On Halloween of this year I deleted TikTok and Instagram from my phone. In my experience most people are extremely opposed to doing this. What I have found so far is that we make it appear much more difficult in our heads. I have not redownloaded either of those apps. What I did do instead however, was develop an extreme reliance on the YouTube app. The weeks following my deletion of TikTok and Instagram, saw my phone screentime jump back up solely due to YouTube. Once again, in my head the idea of deleting YouTube seemed to be an impossible task. I made justifications that watching longer form videos was at least an improvement over short form content. Ironically it ended up being a YouTube video that gave me the will to "Dumbify" my iPhone. The process for this essentially just involves deleting every app you can, and removing almost any app you can't delete, from the homepage. I also set my phone screen to black and white. I did all of this about 5 days ago and it has been interesting to observe the ways that I am adapting or rather, coping. I still use my phone before bed, only now it is texting or reading Wikipedia pages. I feel like I am using my laptop more as well. I still watch YouTube, albeit I have downloaded browser extensions to make it less convenient. Still I feel like these are only marginal improvements. If anything, this process has revealed how greatly my life revolves around technology. I am effectively playing Whack-A-Mole with different platforms and the methods I use to access them. I still feel like an addict.</p>
         <h3>Relationship with Technology II</h3>
+        <i>Nov 27, 2025</i>
         <p>In my dissatisfaction with the current state of things, I started looking to past technologies. Though the belief that consumer technology is harmful has existed forever, it feels that right now the association of techology with evil is greater than ever before. Really what I'm getting at here is I bought an iPod. I actually did this a couple years ago, but my interest in it became renewed after deleting social media. I ordered a lot of parts off of AliExpress and when they all arrived I managed to upgrade the battery, and the storage. I've slowly been acquiring a digital library of music, locally on my computer as MP3s, rather than streamed playlists. I am honestly really happy with it and I feel like this has inspired my next purchase. As part of dumbifying my iPhone, I deleted all my games. Not that I played many games on my phone to begin with. Anyway, to address this mobile gaming shaped hole in my heart, I ordered a Sony PSP from Japan. Sidenote: I have become a sucker for Ebay auctions. Ebay auctions and AliExpress are an extremely potent combo. So yes, I again ordered several parts off of AliExpress to upgrade the device, and address some flaws with it. Currently I am waiting for everything to arrive but I am excited for this. Now you may think "What's the point of replacing all of the functions of your phone with separate devices that do the same thing?". The following may sound stupid, but it's because using these extra devices makes it less convenient. Less convenient to play games, less convenient to listen to music. The same reason I deleted YouTube from my phone, only to use it on my laptop. You may be thinking "but listening to music is not bad for you". I agree to an extent. However when it becomes a habit, or something we stop thinking about, I fear that it has a similar effect to mindless scrolling. The purpose of making these things slightly less convenient, is to promote intentionality with how I spend my time, or even how my brain activity is allocated. I would rather be someone that can go about their day just fine without music, than be someone that needs a constant stream of stimulating music to make it through the day.</p>
-        <!--<img src="https://picsum.photos/seed/two/1200/600" alt="Image two">-->
         
       </article>
+      <div class="right-item">Interests</div>
+    </div>
 
+    <!-- Listening -->
+    <div class="article-wrapper" id="article-3-wrapper">
       <article class="article" id="article-3">
-        <h2>Listening</h2>
+      <h2>Listening</h2>
         <h3>The Music Tapes</h3>
+        <i>Nov 27, 2025</i>
         <p>I am aware of the allegations regarding Julian Koster. He seems like a really bad guy. I will talk about the music now. These songs are genuinely some of the most beautiful things I have ever heard. In a very warm and cozy way. I am very happy that Christmas is right around the corner because these songs are very like old timey christmas kinda thing. This dude is playing banjo with a violin bow. What the freak. And singing/musical saw. Big bells, horns. My favourite songs are It's so Peaceful in the Country, and The Sea of Tranquility. The allegations are extremely dissapointing because this is someone I want to consider a role model and inspiration.</p>
         <img src="https://media.npr.org/assets/img/2011/12/14/juliankoster1_wide-d43ad611404026d24cda6324515c1b6cff43e23a.jpg" alt="Image three">
         <p>These are my favourite songs, you can stream them in here so Julian Koster doesn't get any money.</p>
@@ -215,9 +236,14 @@
             <source src="music/sea.mp3" type="audio/mpeg">
         </audio>
       </article>
+      <div class="right-item">Listening</div>
+    </div>
 
+    <!-- Music -->
+    <div class="article-wrapper" id="article-music-wrapper">
       <article class="article" id="article-music">
-        <h2>Music</h2>
+      <h2>Music</h2>
+      <i>Nov 27, 2025</i>
         <p>Music, I feel has been my most "legitimate" creative output for the better part of 6 years. I started doing this with no prior training, no knowledge of software, no ability to play any instruments. Tutorials bored me. All of the progress I made in this medium was through trial and error. Progress was very slow, and my limited ability led me to establish my own workflow and methods. I created the vast majority of my music between 2020-2023. I have never stopped but I have significantly slowed down. I still write songs often, just fewer are recorded and developed. This is not an amazing feeling but my life has changed greatly in very positive ways that unfortunately did not translate to music. Still I feel the quality of what I do record has continued to increase. I am immesnely proud of the 200 some songs that I have recorded. I encourage anyone reading this to listen to the songs below and explore what else exists on my bandcamp profile. In the past all of my music was recorded using FL Studio. I was initially very unhappy with the sound of VST instruments. This led me to become effective enough at playing a number of instruments. To date I can play the Guitar, Bass, Drums, Accordion, and Banjo. I would like to add musical saw to this list. Recently I have begun using Ableton. Despite a lack of output to prove the following statement, I do believe that my songwriting is in the best place it's ever been. Time will tell if this is true.</p>
         <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=171605608/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://mitchellsaid.bandcamp.com/track/questions-never-asked">Questions Never Asked by Mitchell Said</a></iframe>
         <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=649925329/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://mitchellsaid.bandcamp.com/track/its-over">It&#39;s over by Mitchell Said</a></iframe>
@@ -226,71 +252,39 @@
         <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1108431996/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://mitchellsaid.bandcamp.com/track/still-crumb-night-sounds">still / crumb / night sounds by Mitchell Said</a></iframe>
         
       </article>
+      <div class="right-item">Music</div>
+    </div>
 
-    </main>
+  </main>
 
-  </div>
-  <script>
-    const content = document.querySelector('.content');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const articles = document.querySelectorAll('.article');
+  <!-- Right column placeholder for spacing on desktop if needed -->
+  <div class="right-col" style="grid-area:right;"></div>
 
-    function scrollToTarget(target) {
-      content.classList.add('visible');
-      const targetTop = target.offsetTop;
-      let extraGap;
-      if (window.innerWidth <= 768) { 
-        // mobile
-        const dropdownHeight = mobileMenu.offsetHeight;
-        extraGap = 27;
-        content.scrollTop = targetTop - dropdownHeight - extraGap;
-      } else {
-        // desktop
-        extraGap = 0; // less extra gap on desktop
-        content.scrollTop = targetTop - extraGap;
-      }
-      //mobileMenu.value = '#' + target.id;
-    }
+</div>
 
-    // Desktop links
-    document.querySelectorAll('.desktop-menu a').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const t = document.querySelector(link.getAttribute('href'));
-        scrollToTarget(t);
-      });
-    });
+<script>
+// Smooth scroll for navigation
+document.querySelectorAll('.nav a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: "smooth" });
+  });
+});
+const mobileMenu = document.getElementById('mobile-menu');
 
-    // Mobile dropdown
-    mobileMenu.addEventListener('change', function () {
-      if (!this.value) return;
-      const t = document.querySelector(this.value);
-      scrollToTarget(t);
-      this.selectedIndex = 0;
-    });
+if (mobileMenu) {
+  mobileMenu.addEventListener('change', function () {
+    if (!this.value) return;  // ignore first (hamburger) option
+    const t = document.querySelector(this.value);
+    if (t) t.scrollIntoView({ behavior: 'smooth' }); // scroll smoothly
+    this.selectedIndex = 0; // reset back to hamburger
+  });
+}
 
-    // Update dropdown as user scrolls, only after scrolling down
-    let initialScroll = true;
-    content.addEventListener('scroll', () => {
-      if (initialScroll) {
-        initialScroll = false; // skip first scroll event
-        return;
-      }
-      const scrollPosition = content.scrollTop + mobileMenu.offsetHeight + 100;
-      articles.forEach(article => {
-        if (
-          scrollPosition >= article.offsetTop &&
-          scrollPosition < article.offsetTop + article.offsetHeight
-        ) {
-          //mobileMenu.value = '#' + article.id;
-        }
-      });
-    });
 
-    // Ensure hamburger is shown on page load
-    window.addEventListener('DOMContentLoaded', () => {
-      mobileMenu.value = "";
-    });
-  </script>
+
+</script>
+
 </body>
 </html>
