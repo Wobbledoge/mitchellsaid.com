@@ -19,14 +19,17 @@ html, body { margin:0; padding:0; height:100%; background:#fff; color:#000; }
 
 .nav {
   grid-area: nav;
-  padding:24px;
+  top: 0;
+  padding-left: 3%;
+  padding-right: 0px;
   background:#fff;
   display:flex;
   flex-direction: column;
-  justify-content: center; /* vertically center all nav content */
+  position: sticky;
+  overflow: hidden;
+  justify-content: top;  
   align-items: flex-start; /* keep text left-aligned */
   height: 100vh; /* make nav full height to enable vertical centering */
-  padding-bottom: 20%;
 }
 
 .desktop-menu{
@@ -36,7 +39,7 @@ html, body { margin:0; padding:0; height:100%; background:#fff; color:#000; }
 nav ul { list-style:none; margin:0; padding:0; width:100%; }
 nav li+li { margin-top:10px; }
 nav a { color:#000; text-decoration:none; font-weight:400; display:block; padding:8px; border-radius:6px; font-size: 1.5rem;}
-nav p { color:#000; text-decoration:none; font-weight:400; display:block; padding:8px; border-radius:6px; padding-top: 0%; font-size: 2.2rem; }
+nav p { color:#000; text-decoration:none; font-weight:400; display:block; padding:8px; border-radius:6px; padding-top: 0%; font-size: 2.2rem; font-style: italic;}
 nav a:hover { background:#eee; }
 
 .content {
@@ -61,16 +64,17 @@ nav a:hover { background:#eee; }
 .right-item {
   writing-mode: vertical-rl;
   text-orientation: upright;
-  font-size:1.8rem;
   /*border:2px solid #000;*/
   display:flex;
-  justify-content: center;
+  justify-content: top;
   align-items:center;
   padding:16px;
-  font-weight: 500;
-  font-size: 4rem;
+  font-weight: 400;
+  font-size: 3.5rem;
   padding-bottom: 10%;
   height: 100vh;
+  padding-top: 10%;
+  font-style: italic;
 }
 
 .mobile-title{
@@ -151,6 +155,7 @@ nav a:hover { background:#eee; }
     height: 100%;             /* full height of nav container */
     }
   .mobile-title { display:block; text-align:center; font-size:1.5rem; margin-bottom:0px; }
+  .nav-bottom-img{display: none;}
 }
 
 @media (min-width:769px) {
@@ -163,11 +168,22 @@ nav a:hover { background:#eee; }
     height: 100vh;         /* full height of viewport */
     display: flex;
     flex-direction: column;
-    justify-content: center; /* vertically center items */
+    overflow: hidden;
     align-items: flex-start;
-    padding-bottom: 20%;
+    flex: 0 1 auto;
+    min-width: 290px;
+    max-width: 0.315fr;
+
   }  
-    
+  .nav-bottom-img {
+    position: fixed;
+    bottom: 0px;   /* adjust vertical spacing */
+    left: 2%;       /* same as your nav left padding */
+    max-width: 17%; /* keeps it within nav column width */
+    min-width: 275px;
+    height: auto;
+    z-index: 0;   /* stays above text */
+  }
     
 }
 </style>
@@ -187,7 +203,9 @@ nav a:hover { background:#eee; }
         <li><a href="#article-3">Listening</a></li>
         <li><a href="#article-music">Music</a></li>
       </ul>
+      
     </nav>
+    
     <div class="mobile-menu-wrapper">
       <select id="mobile-menu" class="mobile-menu">
         <option value="" selected>&#9776;</option> <!-- hamburger always shown -->
@@ -197,6 +215,7 @@ nav a:hover { background:#eee; }
         <option value="#article-music">Music</option>
       </select>
     </div>
+    <img class="nav-bottom-img" src="images/moore2.png" alt="mitchellsaid.com">
   </aside>
 
 
@@ -223,7 +242,7 @@ nav a:hover { background:#eee; }
       <h2>Interests</h2>
         <h3>What is a Home?</h3>
         <i>Dec 04, 2025</i>
-        <p>Recently I went to my parents house for the weekend. One night while I was there I had a conversation with my mom. I'm not sure how the topic came up but we ended up talking about the kinds of houses that we would want to live in. We then spent the next hour looking at real estate listings all over Ontario, which is a hobby we share. After this I went to the basement where I continued thinking about what my dream house would look like. Frustratingly, my dream house is not a house that gets built anymore, depsite being ubiquitous in the past century. I want brick exterior walls, wood panelling. Ornate (relatively speaking) interior finishes and millwork, etc. These houses exist of course, just at a price point that seems exceptionally far beyond anything I could afford in my lifetime. One possible solution I thought of was to build a house myself. Next thing I know, I was watching videos explaining tudor wood panels, historical wood carving, and deciphering the "narrative" of a home. It seemed incredibly diffcult, but despite this I could not shake the thought that if it was possible for someone to build a house 200 years ago, why shouldn't it be for me? At this point I started thinking about what a house meant to me. Afterall building a house using historial methods seems very extreme. I think the predominant societal view now is that the house is a financial investment. One that does not (or at least should not) depreciate in value. I think this is completely insane and delusional. So given that I do not agree with this investment view, what does a house mean to me? I think for generations far older than myself, a house was viewed as a first step towards accomplishing subsequent milestones in life. Things like marriage, and kids. The house served as a space for building a family. While I think this is a valid view, I am not at a point in my life where I am trying to build a family. There are also many people that never aspire for this, yet the home is still important to them. After a little bit of reflecting this is what I realized. There's a lot of public discourse regarding a decline of third spaces, I'm sure we've all heard about this. I think what's been happening at the same time is a decline in the quality of first spaces. If a third space is where one can explore the world externally, the first space is where one can explore within. This internal exploration can take many forms. Something as simple as decoration is in my opinion very important to the individual. Decoration can provide connection between the world and the self. Additionally, I feel that hobbies provide significant value to my life. I have personally always been very into creative hobbies where I get to make things. A frequent barrier I have encountered is that sometimes these things are loud, or they take up lots of space, or are otherwise deemed disturbances. Without a private space that I am truly free to customize, my interest, hobbies, passions, the things that matter the most to me, far more than a career, become limited. These limitations on my hobbies by extension become limitations on my expression of self. Today I watched a video of an 87 year old artist showing his studio space where he has lived for 58 years. He never had a wife, he never had kids, but what he did have was a space that he owned, a space that he valued for the freedom it provided, and for the expression it allowed. I think on some level the soul demands a space to grow, and a space to express said growth. This is what a home means to me. </p>
+        <p>Recently I went to my parents house for the weekend. One night while I was there I had a conversation with my mom. I'm not sure how the topic came up but we ended up talking about the kinds of houses that we would want to live in. We then spent the next hour looking at real estate listings all over Ontario, which is a hobby we share. After this I went to the basement where I continued thinking about what my dream house would look like. Frustratingly, my dream house is not a house that gets built anymore, depsite being ubiquitous in the past century. I want brick exterior walls, wood panelling. Ornate (relatively speaking) interior finishes and millwork, etc. These houses exist of course, just at a price point that seems exceptionally far beyond anything I could afford in my lifetime. One possible solution I thought of was to build a house myself. Next thing I know, I was watching videos explaining tudor wood panels, historical wood carving, and deciphering the "narrative" of a home. It seemed incredibly diffcult, but despite this I could not shake the thought that if it was possible for someone to build a house 200 years ago, why shouldn't it be for me? At this point I started thinking about what a house meant to me. Afterall building a house using historial methods seems very extreme. I think the predominant societal view now is that the house is a financial investment. One that does not (or at least should not) depreciate in value. I think this is completely insane and delusional. So given that I do not agree with this investment view, what does a house mean to me? I think for generations far older than myself, a house was viewed as a first step towards accomplishing subsequent milestones in life. Things like marriage, and kids. The house served as a space for building a family. While I think this is a valid view, I am not at a point in my life where I am trying to build a family. There are also many people that never aspire for this, yet the home is still important to them. After a little bit of reflecting this is what I realized. There's a lot of public discourse regarding a decline of third spaces, I'm sure we've all heard about this. I think what's been happening at the same time is a decline in the quality of first spaces. If a third space is where one can explore the world externally, the first space is where one can explore within. This internal exploration can take many forms. Something as simple as decoration is in my opinion very important to the individual. Decoration can provide connection between the world and the self. Additionally, I feel that hobbies provide significant value to my life. I have personally always been very into creative hobbies where I get to make things. A frequent barrier I have encountered is that sometimes these things are loud, or they take up lots of space, or are otherwise deemed disturbances. Without a private space that I am truly free to customize, my interest, hobbies, passions, the things that matter the most to me, far more than a career, become limited. These limitations on my hobbies by extension become limitations on my expression of self. Today I watched a <a href="https://www.youtube.com/watch?v=_A_u4N08B9U">video</a> of an 87 year old artist showing his studio space where he has lived for 58 years. He never had a wife, he never had kids, but what he did have was a space that he owned, a space that he valued for the freedom it provided, and for the expression it allowed. I think on some level the soul demands a space to grow, and a space to express said growth. This is what a home means to me. </p>
         <h3>Relationship with Technology</h3>
         <i>Nov 27, 2025</i>
         <p>This topic is consuming me at the moment. I made this website as a reaction to my own dissatifaction with the way information is circulated now. I admittedly have some pretty radical views regarding the ownership of the digital world but I'm going to tone it down for this post. Social media as it exists now is pretty much one of the most harmful psychological weapons in all of human history. I think what I find very upsetting about this is that most people understand this but accept it with an apathetic malaise. I think the tipping point for me was learning that doomscrolling is causing actual real observable changes to brain function. My personal view is that funny video feed is not worth permanent brain damage. On Halloween of this year I deleted TikTok and Instagram from my phone. In my experience most people are extremely opposed to doing this. What I have found so far is that we make it appear much more difficult in our heads. I have not redownloaded either of those apps. What I did do instead however, was develop an extreme reliance on the YouTube app. The weeks following my deletion of TikTok and Instagram, saw my phone screentime jump back up solely due to YouTube. Once again, in my head the idea of deleting YouTube seemed to be an impossible task. I made justifications that watching longer form videos was at least an improvement over short form content. Ironically it ended up being a YouTube video that gave me the will to "Dumbify" my iPhone. The process for this essentially just involves deleting every app you can, and removing almost any app you can't delete, from the homepage. I also set my phone screen to black and white. I did all of this about 5 days ago and it has been interesting to observe the ways that I am adapting or rather, coping. I still use my phone before bed, only now it is texting or reading Wikipedia pages. I feel like I am using my laptop more as well. I still watch YouTube, albeit I have downloaded browser extensions to make it less convenient. Still I feel like these are only marginal improvements. If anything, this process has revealed how greatly my life revolves around technology. I am effectively playing Whack-A-Mole with different platforms and the methods I use to access them. I still feel like an addict.</p>
