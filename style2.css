@@ -68,7 +68,7 @@ nav a:hover { background:#eee; }
   font-size: 2rem;
   padding-bottom: 10%;
   /*height: 100vh;*/
-  padding-top: 45%;
+  padding-top: 119px;
   font-style: italic;
 }
 
@@ -213,4 +213,5 @@ nav a:hover { background:#eee; }
     z-index: 0;   /* stays above text */
   }
     
+
 }
