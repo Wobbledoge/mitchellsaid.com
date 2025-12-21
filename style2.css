@@ -15,6 +15,18 @@ html, body {
 body a, button, iframe{
   cursor: url('images/cursor.png'),auto;
 }
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("images/chrome3.png");
+  background-size: cover;
+  background-position: center;
+  z-index: -1; /* behind all content */
+}
 /* Three-column layout */
 .layout {
   display: grid;
