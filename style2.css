@@ -279,3 +279,8 @@ nav p { text-decoration:none; font-weight:400; display:block; padding:8px; borde
   }
     
 }
+html {
+  background-color: black;
+  padding-top: env(safe-area-inset-top);
+}
+
