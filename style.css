@@ -6,11 +6,7 @@ html, body {
   height:100%;
   color:#000;
 
-  background-image: url("images/chrome3.png"); /* replace with your image */
-  background-size: cover;       /* make it cover entire screen */
-  background-position: center;  /* center the image */
-  background-repeat: no-repeat; /* don't repeat */
-  background-attachment: fixed; /* make it stay in place when scrolling */
+
 }
 body a, button, iframe{
   cursor: url('images/cursor.png'),auto;
@@ -22,10 +18,14 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
+
   background-image: url("images/chrome3.png");
   background-size: cover;
   background-position: center;
-  z-index: -1; /* behind all content */
+  background-repeat: no-repeat;
+
+  z-index: -1;       /* pushes it behind everything */
+  pointer-events: none; /* prevents interference */
 }
 /* Three-column layout */
 .layout {
@@ -189,7 +189,7 @@ nav p { text-decoration:none; font-weight:400; display:block; padding:8px; borde
     z-index: 1000;          /* ensure it stays above content */
     padding-top: 0px;
     padding-bottom: 0px;
-
+    background: transparent;
   }
 
   .desktop-menu { display:none; }
@@ -263,6 +263,7 @@ nav p { text-decoration:none; font-weight:400; display:block; padding:8px; borde
     align-items: flex-end;  /* right-align nav items */
     padding-right: 0px;    /* distance from content */
     padding-left: 0%;        /* remove left padding */
+    background: transparent;
   }
 
 
