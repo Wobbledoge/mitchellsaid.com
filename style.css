@@ -285,11 +285,10 @@ nav p { text-decoration:none; font-weight:400; display:block; padding:8px; borde
   .nav-bottom-img {
     position: absolute;
     bottom: 0;
-    right: 20px;            /* aligns with nav padding */
+    left:20px;           /* aligns with nav padding */
     max-width: 250px;       /* stay within nav column */
     height: auto;
-    display: none;
+
   }
     
 }
-
