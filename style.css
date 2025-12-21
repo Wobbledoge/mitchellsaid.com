@@ -1,6 +1,6 @@
 * { box-sizing: border-box; font-family: 'Times New Roman', serif; }
 html, body {
-
+  cursor: url('images/cursor3.png'),auto;
   margin:0;
   padding:0;
   height:100%;
@@ -12,7 +12,9 @@ html, body {
   background-repeat: no-repeat; /* don't repeat */
   background-attachment: fixed; /* make it stay in place when scrolling */
 }
-
+body a, button, iframe{
+  cursor: url('images/cursor.png'),auto;
+}
 /* Three-column layout */
 .layout {
   display: grid;
