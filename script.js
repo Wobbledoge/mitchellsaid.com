@@ -2,7 +2,7 @@ function scrollToTarget(target) {
   if (!target) return;
 
   // Set offset based on viewport width
-  const offset = window.innerWidth <= 768 ? 100 : 20; 
+  const offset = window.innerWidth <= 768 ? 110 : 20; 
   // 100px offset on mobile, 20px on desktop
 
   const topPos = target.getBoundingClientRect().top + window.pageYOffset;
