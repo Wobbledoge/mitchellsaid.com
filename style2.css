@@ -5,6 +5,7 @@ html, body {
   padding:0;
   height:100%;
   color:#000;
+  background: transparent;
 
 
 }
@@ -280,7 +281,10 @@ nav p { text-decoration:none; font-weight:400; display:block; padding:8px; borde
     
 }
 html {
-  background-color: black;
+  background-image: url("images/chrome3.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding-top: env(safe-area-inset-top);
 }
 
