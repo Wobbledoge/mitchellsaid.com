@@ -76,7 +76,7 @@ nav ul {
 
 }
 nav li+li { margin-top:0px; }
-nav a { text-decoration:none; font-weight:400; display:block; padding:8px; border-radius:6px; font-size: 1.5rem;}
+nav a { text-decoration:none; font-weight:400; display:block; padding:8px; border-radius:6px; font-size: 1.3rem;}
 nav p { text-decoration:none; font-weight:400; display:block; padding:8px; border-radius:6px; padding-top: 0%; margin-top: 10px; font-size: 2.2rem;}
 
 
@@ -175,7 +175,25 @@ nav p { text-decoration:none; font-weight:400; display:block; padding:8px; borde
 .navlink {
   color: rgba(218,0,22,1);
   font-style: italic;
+  flex: 1;
+  text-align: right;
 
+}
+.navdate {
+  color: rgba(218,0,22,1);
+  font-style: italic;
+  width: 30%;
+  text-align: left;
+
+}
+.navmid {
+  color: rgba(218,0,22,1);
+  font-style: italic;
+  text-align: center;
+  width: 0;
+}
+.navsection{
+  display: flex;
 }
 
 @media (max-width:768px) {
