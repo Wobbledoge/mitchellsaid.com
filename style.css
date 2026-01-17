@@ -71,7 +71,7 @@ nav ul {
 
   border:4px groove rgba(97,0,10,1); 
   border-radius: 15px; 
-  max-width: 265px;
+  width: 265px;
 
 }
 nav li+li { margin-top:0px; }

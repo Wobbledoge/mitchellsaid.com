@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="style2.css">
+<meta name="theme-color" content="#000000">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>mitchellsaid.com</title>
+
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- Navigation column -->
+  <aside class="nav">
+
+    <nav class="desktop-menu">
+      <ul>
+        <a class="back-button" href="index.html"><p>mitchellsaid.com</p></a>
+        <p class="subtitle">About:</p>
+        <li><div class="navsection"><a class="navdate" href="#article-2">01/17/26</a><a class="navmid" href="#article-2">.....................</a><a class="navlink" href="#article-2">About</a></div></li>
+        <li><div class="navsection"><a class="navdate" href="#article-1">11/27/25</a><a class="navmid" href="#article-1">.....................</a><a class="navlink" href="#article-1">About</a></div></li>
+
+      </ul>
+      
+    </nav>
+    
+    <div class="mobile-header">
+    <div class="mobile-title"><a href="index.html">mitchellsaid.com</a></div>
+    <div class="mobile-menu-wrapper">
+      <select id="mobile-menu" class="mobile-menu">
+        <option value="" selected>&#9776;</option> <!-- hamburger always shown -->
+        <option value="#article-2">About</option>
+        <option value="#article-1">About</option>
+      </select>
+    </div>
+    </div>
+  </aside>
+
+
+
+  <!-- Content column -->
+  <main class="content">
+      <div class="article-wrapper" id="article-2-wrapper">
+      <article class="article" id="article-2">
+      <h2>About</h2>
+              <h2> </h2>
+      <i>Jan 17, 2026</i>
+      <p>If you are already on this website I think it's safe to assume you at least vaguely know of me. That's really the best case scenario.</p>
+      <p>This website is a place for me to practice sincerity. That's my understanding of it right now at least. I'm not making any effort for the writings here to be perceived in any way, they are very much just straight from my head.</p>
+      <p>This is effectively a journal of sorts. Only made public. Mostly I just write about things that interest me. Opinions. I wouldn't consider this a website of any serious societal value. The only thing you can learn about on here is me. But I think that's okay. I know the value that I get out of it at least, and I'm the one paying for the domain name at the end of the day.</p>
+      <p>I try to update it fairly regularly, I think it depends mostly on if I have anything I want to share.</p>
+      <p>The "Interests" section is the main body of the website in my eyes. It's where almost everything I write about goes.</p>
+      <p>The "Listening" tab is admittedly pretty sparse. I truthfully just do not listen to a lot of music anymore. I never did listen to a lot of music. I listened to a little bit of music a lot.</p>
+      <p>The "Music" tab is where music that I've made goes. Half of my website relates to music and I just said I don't listen to much music.</p>
+      <p>Right now I'm trying to decide if I want this website to reach anyone outside of my immediate friend circle. I think I do but maybe I'm being histrionic. I'm just a guy. I think I like doing the website for its own sake.</p>
+      <p>While I figure things out here is a photo of my friend Nick Mullen</p>
+      <center><img src="images/mullen2.png" alt="Image one" style="width: 60%; height: auto;"></center>
+
+    </article>
+      <div class="right-item">01/17/26</div>
+    </div>
+
+    <div class="article-wrapper" id="article-1-wrapper">
+      <article class="article" id="article-1">
+      <h2>About</h2>
+              <h2> </h2>
+      <i>Nov 27, 2025</i>
+        <p>My name is Mitchell Said. I was born on October 10th, 2003. This means I am 22 years old. I have chosen to make a blog because I have become dissillusioned with the current implementation of social media. I hope that this blog can be a healthier expression of myself.</p>
+        <p>I want this website to be a place where I can talk about whatever I want. Separate from the whole social media thing, I have wanted to start a blog for a while. I have a lot of views and opinions that I want to share. I want to practice writing on here, a skill that has been lost after a half decade of engineering study. I am also a pretty political guy, in a far left kind of way. So it is also possible that there will be articles or opinion pieces on here relating to that. I also have a place to write about my interests past and present. A place to document my listening tastes and preferences. And finally a place to share some of my own creative output.</p>
+        <P>Anyway some more about me. My role models/inspirations are Nick Mullen, Joshua Citarella, Che Guevara, and honestly Zohran Mamdani. Seriously that guy is one of the most inspring things to happen in my lifetime and I believe that wholeheartedly.</P>
+        <p>Below is my friend Nick Mullen.</p>
+      <img src="images/mullen.png" alt="Image one">
+      </article>
+      <div class="right-item">11/27/25</div>
+    </div>
+  </main>
+
+  <!-- Right column placeholder for spacing on desktop if needed -->
+  <div class="right-col" style="grid-area:right;"></div>
+
+</div>
+
+<script>
+function scrollToTarget(target) {
+  if (!target) return;
+
+  // Set offset based on viewport width
+  const offset = window.innerWidth <= 768 ? 100 : 20; 
+  // 100px offset on mobile, 20px on desktop
+
+  const topPos = target.getBoundingClientRect().top + window.pageYOffset;
+  window.scrollTo({
+    top: topPos - offset,
+    behavior: 'smooth'
+  });
+}
+
+// For nav links
+document.querySelectorAll('.nav a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      scrollToTarget(target);
+    }
+  });
+});
+
+// For mobile dropdown
+const mobileMenu = document.getElementById('mobile-menu');
+if (mobileMenu) {
+  mobileMenu.addEventListener('change', function() {
+    if (!this.value) return;
+
+    if (this.value.startsWith('#')) {
+      const target = document.querySelector(this.value);
+      scrollToTarget(target);
+    } else {
+      window.location.href = this.value; // normal file link
+    }
+    this.selectedIndex = 0; // reset hamburger
+  });
+}
+
+
+</script>
+
+</body>
+</html>
