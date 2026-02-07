@@ -1,0 +1,313 @@
+* { box-sizing: border-box; font-family: 'Times New Roman', serif; }
+html, body {
+  cursor: url('images/cursor3.png') 16 16,auto;
+  margin:0;
+  padding:0;
+  height:100%;
+  color:#000;
+  background: transparent;
+
+}
+body {
+  background-color: #fff;
+}
+body a, button, iframe{
+  cursor: url('images/cursor.png') 16 16,auto;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+
+ 
+
+  z-index: -1;       /* pushes it behind everything */
+  pointer-events: none; /* prevents interference */
+}
+/* Three-column layout */
+.layout {
+  display: grid;
+  grid-template-columns: 0.315fr 1fr; /* nav fixed width, content flexible */
+  grid-template-areas: "nav content right";
+  width: 100%;
+  min-height: 100vh;
+  column-gap: 2px; /* fixed distance between nav and content */
+}
+
+.nav {
+  grid-area: nav;
+  top: 0;
+
+  
+  padding-top: 20px;
+  display:flex;
+  flex-direction: column;
+  position: sticky;
+  overflow: visible;
+  justify-content: top;  
+  align-items: flex-end; /* keep text left-aligned */
+  height: 100vh; /* make nav full height to enable vertical centering */
+  /*border-right:1px solid #e1ffc6;*/
+
+
+}
+
+.desktop-menu{
+    padding-left: 0%;
+}
+
+nav ul { 
+  list-style:none; 
+  margin:0; padding:0; 
+  width:100%; 
+  background-color: rgba(255,255,255,1);  
+  padding-top:0px;
+
+
+  border:none;
+  border-radius: 15px; 
+  width: 265px;
+
+}
+nav li+li { margin-top:0px; }
+nav a { text-decoration:none; font-weight:400; display:block; padding:8px; border-radius:6px; font-size: 1.3rem;}
+nav p { text-decoration:none; font-weight:400; display:block; padding:8px; border-radius:6px; padding-top: 0%; margin-top: 10px; font-size: 2.2rem;}
+
+
+.content {
+  grid-area: content;
+  padding-left:8px;
+  padding-right:8px;
+  padding-bottom:8px;
+  padding-top: 20px;
+}
+
+/* Wrap each article + right item in a grid */
+.article-wrapper {
+  display:grid;
+  grid-template-columns: 1.5fr 0.33fr; /* center + right */
+  gap:16px;
+  margin-bottom:40px;
+}
+
+.article {
+  padding:16px;
+  background-color: rgba(255,255,255,1);
+  border-radius: 15px;
+  color: #000;
+  border:none;
+  margin-top: 0;
+  padding-top: 0px;
+}
+.article h2{
+  color: rgba(0,0,0,1);
+  font-style: italic;
+}
+
+.article img, .article iframe { width:100%; height:auto; border-radius:8px; margin:10px 0; }
+
+.right-item {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  /*border:2px solid #000;*/
+  display:flex;
+  justify-content: top;
+  align-items:center;
+  padding:16px;
+  font-weight: 400;
+  font-size: 2rem;
+  padding-bottom: 10%;
+  height: 95vh;
+  padding-top: 30px;
+  font-style: italic;
+  color: rgba(0,0,0,1);
+}
+
+.mobile-title{
+  display: none;
+}
+.mobile-menu-wrapper { 
+  display:none; 
+  justify-content:center; 
+  align-items:center; 
+  width:100%; 
+  margin-bottom:16px;
+}
+
+
+.h2-row {
+  display: flex;
+  align-items: baseline; /* keep link aligned nicely with text */
+  gap: 10px;
+  margin: 0;             /* remove any extra space */
+  padding: 0;
+}
+
+.article h2 {
+  margin-bottom: 0;             /* remove built-in h2 margins */
+}
+
+.h2-side-link {
+  font-size: 1.5rem;     /* slightly smaller than the h2 */
+  font-weight: normal;   /* not bold */
+  text-decoration: none; /* optional */
+
+}
+.back-button {
+  margin:0;
+  padding: 0;
+  color: rgba(0,0,0,1);
+  font-style: italic;
+}
+.subtitle {
+  font-size: 1.75rem;
+  padding-top: 0;
+  margin-top: 0;
+  color: rgba(0,0,0,1);
+
+}
+.navlink {
+  color: rgba(0,0,0,1);
+  font-style: italic;
+  flex: 1;
+  text-align: right;
+
+}
+.navdate {
+  color: rgba(0,0,0,1);
+  font-style: italic;
+  width: 30%;
+  text-align: left;
+
+}
+.navmid {
+  color: rgba(0,0,0,1);
+  font-style: italic;
+  text-align: center;
+  width: 0;
+}
+.navsection{
+  display: flex;
+}
+
+@media (max-width:768px) {
+  .layout {
+    grid-template-columns:1fr; 
+    grid-template-rows:auto 1fr; 
+    grid-template-areas:"nav" "content"; 
+  }
+
+  .nav {
+    position: sticky;       /* stick to viewport */
+    top: 0;                 /* at the top */
+    height: auto;           /* allow height to shrink to content */
+    justify-content: center; /* stack items at top */
+    align-items: center;    /* center horizontally */       /* optional: same as body bg */
+    z-index: 1000;          /* ensure it stays above content */
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+
+  }
+  .mobile-header{
+    background-color: rgba(255,255,255,1);
+    border:4px groove rgba(255,255,255,1);
+    border-radius: 15px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    margin: 7px;
+    margin-top: 0px;
+
+  }
+
+
+  .desktop-menu { display:none; }
+  .right-item { display:none; } /* hide right boxes on mobile */
+  .article-wrapper { 
+    display:block; /* stack articles normally */
+    margin-bottom:20px; 
+  }
+    #mobile-menu {
+    -moz-appearance: none;
+    -webkit-appearance: none;  /* remove default iOS styling */
+    appearance: none;
+    text-align: center;        /* center the text inside */
+    font-size: 1.5rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding-bottom: 0px;
+    text-align: center;        /* centers most text */
+    text-align-last: center;
+    color: rgba(0,0,0,1);
+ 
+    outline: none;
+    box-shadow: none;
+    }
+  .article { 
+    min-height:auto; 
+    padding:5px;
+    padding-top: 0px;
+    padding-left: 10px;
+  }
+
+  .content{
+    padding-top: 0px;
+  }
+  .mobile-menu-wrapper {
+    display: flex;
+    justify-content: center;  /* horizontal center */
+    align-items: center;      /* vertical center */
+
+
+
+    }
+  .mobile-title { 
+    display:block;
+    text-align:center; 
+    font-size:1.5rem; 
+    margin-bottom:0px; 
+    padding-top: 15px;
+
+    min-width: 96vw;
+  }
+  .mobile-title a{ color: rgba(0,0,0,1);}
+  .nav-bottom-img{display: none;}
+
+  
+}
+
+@media (min-width:769px) {
+  .mobile-menu-wrapper { 
+    display:none; 
+    } 
+  .nav {
+    position: sticky;       /* stick to top */
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;  /* right-align nav items */
+    padding-right: 0px;    /* distance from content */
+    padding-left: 0%;        /* remove left padding */
+  }
+
+
+
+  .nav-bottom-img {
+    position: absolute;
+    bottom: 0;
+    right: 20px;            /* aligns with nav padding */
+    max-width: 250px;       /* stay within nav column */
+    height: auto;
+    display: none;
+  }
+    
+}
+
+
