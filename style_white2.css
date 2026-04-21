@@ -215,10 +215,7 @@ nav p { text-decoration:none; font-weight:400; display:block; padding:8px; borde
   }
   .mobile-header{
     background-color: rgba(255,255,255,1);
-    border:4px groove rgba(255,255,255,1);
-    border-radius: 15px;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
+    border: none;
     margin: 7px;
     margin-top: 0px;
 
